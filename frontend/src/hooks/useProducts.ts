@@ -133,7 +133,7 @@ export function useProductSearch(query: string, limit: number = 10) {
  * Features: Loading state, error state, data state
  */
 export function useCategories() {
-  const [data, setData] = useState<string[]>([])
+  const [data, setData] = useState<string[] | { slug: string; name: string; url: string }[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<ApiError | null>(null)
 

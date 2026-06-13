@@ -34,7 +34,10 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "strict": true
+    "strict": true,
+
+    /* Ignore TypeScript 6.0 deprecations */
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src"]
 }
