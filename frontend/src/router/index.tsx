@@ -9,12 +9,14 @@ import CartPage from '@pages/CartPage'
 import WishlistPage from '@pages/WishlistPage'
 import CheckoutPage from '@pages/CheckoutPage'
 import OrderSuccessPage from '@pages/OrderSuccessPage'
+import ProfilePage from '@pages/ProfilePage'
+import SettingsPage from '@pages/SettingsPage'
 import NotFoundPage from '@pages/NotFoundPage'
 import DashboardPage from '@pages/admin/DashboardPage'
 import ProductsPageAdmin from '@pages/admin/ProductsPage'
 import OrdersPage from '@pages/admin/OrdersPage'
 import CustomersPage from '@pages/admin/CustomersPage'
-import SettingsPage from '@pages/admin/SettingsPage'
+import AdminSettingsPage from '@pages/admin/SettingsPage'
 import LoginPage from '@pages/auth/LoginPage'
 import RegisterPage from '@pages/auth/RegisterPage'
 import ForgotPasswordPage from '@pages/auth/ForgotPasswordPage'
@@ -39,6 +41,22 @@ const router = createBrowserRouter([
         ),
       },
       { path: 'order-success', element: <OrderSuccessPage /> },
+      {
+        path: 'profile',
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'settings',
+        element: (
+          <ProtectedRoute>
+            <SettingsPage />
+          </ProtectedRoute>
+        ),
+      },
     ],
   },
   { path: '/login', element: <LoginPage /> },
@@ -57,7 +75,7 @@ const router = createBrowserRouter([
           { path: 'products', element: <ProductsPageAdmin /> },
           { path: 'orders', element: <OrdersPage /> },
           { path: 'customers', element: <CustomersPage /> },
-          { path: 'settings', element: <SettingsPage /> },
+          { path: 'settings', element: <AdminSettingsPage /> },
         ],
       },
     ],
