@@ -1,11 +1,3 @@
-/**
- * Revenue Chart Component
- * 
- * Purpose: Display revenue trends over time
- * Why it exists: Visualizes monthly revenue and order data
- * Features: Line chart with dual axes, glassmorphism design
- */
-
 import {
   LineChart,
   Line,
@@ -24,31 +16,34 @@ interface RevenueChartProps {
 
 const RevenueChart = ({ data }: RevenueChartProps) => {
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <LineChart data={data}>
+    <ResponsiveContainer width="100%" height={250}>
+      <LineChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="rgba(156, 163, 175, 0.2)" />
         <XAxis
           dataKey="month"
           stroke="#6b7280"
-          fontSize={12}
+          fontSize={11}
           tickLine={false}
           axisLine={false}
+          interval="preserveStartEnd"
         />
         <YAxis
           yAxisId="revenue"
           stroke="#6b7280"
-          fontSize={12}
+          fontSize={11}
           tickLine={false}
           axisLine={false}
           tickFormatter={(value) => `$${value}`}
+          width={45}
         />
         <YAxis
           yAxisId="orders"
           orientation="right"
           stroke="#6b7280"
-          fontSize={12}
+          fontSize={11}
           tickLine={false}
           axisLine={false}
+          width={30}
         />
         <Tooltip
           contentStyle={{
@@ -56,17 +51,18 @@ const RevenueChart = ({ data }: RevenueChartProps) => {
             backdropFilter: 'blur(10px)',
             border: '1px solid rgba(156, 163, 175, 0.2)',
             borderRadius: '8px',
+            fontSize: '12px',
           }}
         />
-        <Legend />
+        <Legend wrapperStyle={{ fontSize: '12px' }} />
         <Line
           yAxisId="revenue"
           type="monotone"
           dataKey="revenue"
           stroke="#9333ea"
           strokeWidth={2}
-          dot={{ fill: '#9333ea', strokeWidth: 2, r: 4 }}
-          activeDot={{ r: 6 }}
+          dot={{ fill: '#9333ea', strokeWidth: 2, r: 3 }}
+          activeDot={{ r: 5 }}
           name="Revenue ($)"
         />
         <Line
@@ -75,8 +71,8 @@ const RevenueChart = ({ data }: RevenueChartProps) => {
           dataKey="orders"
           stroke="#ec4899"
           strokeWidth={2}
-          dot={{ fill: '#ec4899', strokeWidth: 2, r: 4 }}
-          activeDot={{ r: 6 }}
+          dot={{ fill: '#ec4899', strokeWidth: 2, r: 3 }}
+          activeDot={{ r: 5 }}
           name="Orders"
         />
       </LineChart>

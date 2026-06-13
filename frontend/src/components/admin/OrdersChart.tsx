@@ -1,11 +1,3 @@
-/**
- * Orders Chart Component
- * 
- * Purpose: Display order status trends over time
- * Why it exists: Visualizes order status distribution
- * Features: Bar chart with stacked bars, glassmorphism design
- */
-
 import {
   BarChart,
   Bar,
@@ -24,21 +16,23 @@ interface OrdersChartProps {
 
 const OrdersChart = ({ data }: OrdersChartProps) => {
   return (
-    <ResponsiveContainer width="100%" height={300}>
-      <BarChart data={data}>
+    <ResponsiveContainer width="100%" height={250}>
+      <BarChart data={data} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
         <CartesianGrid strokeDasharray="3 3" stroke="rgba(156, 163, 175, 0.2)" />
         <XAxis
           dataKey="date"
           stroke="#6b7280"
-          fontSize={12}
+          fontSize={11}
           tickLine={false}
           axisLine={false}
+          interval="preserveStartEnd"
         />
         <YAxis
           stroke="#6b7280"
-          fontSize={12}
+          fontSize={11}
           tickLine={false}
           axisLine={false}
+          width={30}
         />
         <Tooltip
           contentStyle={{
@@ -46,9 +40,10 @@ const OrdersChart = ({ data }: OrdersChartProps) => {
             backdropFilter: 'blur(10px)',
             border: '1px solid rgba(156, 163, 175, 0.2)',
             borderRadius: '8px',
+            fontSize: '12px',
           }}
         />
-        <Legend />
+        <Legend wrapperStyle={{ fontSize: '12px' }} />
         <Bar
           dataKey="delivered"
           fill="#22c55e"

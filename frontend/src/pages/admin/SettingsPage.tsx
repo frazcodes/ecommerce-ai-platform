@@ -38,24 +38,24 @@ const SettingsPage = () => {
   }
 
   return (
-    <div className="max-w-2xl">
-      <div className="mb-8">
+    <div className="max-w-2xl mx-auto">
+      <div className="mb-6 sm:mb-8">
         <Link
           to="/admin/dashboard"
-          className="mb-4 inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-brand-600"
+          className="mb-3 inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-brand-600 sm:mb-4"
         >
           <FiArrowLeft size={16} />
           Back to dashboard
         </Link>
-        <h1 className="font-display text-3xl font-bold">Settings</h1>
-        <p className="mt-2 text-[var(--text-secondary)]">
+        <h1 className="text-2xl font-bold sm:text-3xl">Settings</h1>
+        <p className="mt-1 text-sm text-[var(--text-secondary)] sm:mt-2">
           Manage your admin account settings
         </p>
       </div>
 
-      <div className="glass-card p-6">
+      <div className="glass-card p-4 sm:p-6">
         <h2 className="mb-1 font-semibold text-[var(--text-primary)]">Account</h2>
-        <p className="mb-6 text-sm text-[var(--text-secondary)]">
+        <p className="mb-4 text-sm text-[var(--text-secondary)] sm:mb-6">
           Signed in as <strong>{user?.email}</strong> ({user?.role})
         </p>
 
@@ -64,7 +64,7 @@ const SettingsPage = () => {
           Change Password
         </h3>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           <input
             type="password"
             placeholder="Current password"
@@ -105,7 +105,7 @@ const SettingsPage = () => {
           <button
             type="submit"
             disabled={isLoading}
-            className="btn-primary disabled:opacity-50"
+            className="btn-primary w-full disabled:opacity-50 sm:w-auto"
           >
             {isLoading ? 'Updating...' : 'Update Password'}
           </button>
