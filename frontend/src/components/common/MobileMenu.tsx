@@ -1,7 +1,9 @@
 import { useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiX, FiHome, FiShoppingBag, FiHeart, FiUser } from 'react-icons/fi'
+import { FiX, FiHome, FiShoppingBag, FiHeart, FiUser, FiLogIn, FiUserPlus } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
+import DarkModeToggle from './DarkModeToggle'
+import { useAuth } from '../../hooks/useAuth'
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -11,13 +13,14 @@ interface MobileMenuProps {
 
 /**
  * MobileMenu Component
- * 
+ *
  * Purpose: Hamburger menu for mobile devices
  * Why it exists: Provides navigation for mobile users with premium UX
- * Features: Animated menu items, staggered entrance, close on click outside
+ * Features: Animated menu items, staggered entrance, close on click outside, auth controls, theme toggle
  */
 const MobileMenu = ({ isOpen, onClose, cartItemCount = 0 }: MobileMenuProps) => {
   const menuRef = useRef<HTMLDivElement>(null)
+  const { isAuthenticated } = useAuth()
 
   // Close menu when clicking outside
   useEffect(() => {
@@ -102,13 +105,76 @@ const MobileMenu = ({ isOpen, onClose, cartItemCount = 0 }: MobileMenuProps) => 
                   </Link>
                 </motion.div>
               ))}
+
+              {/* Divider */}
+              <div className="my-4 border-t border-gray-200/50 dark:border-gray-700/50" />
+
+              {/* Theme Toggle */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 }}
+                className="flex items-center gap-4 rounded-lg px-4 py-4 text-gray-700 dark:text-gray-300"
+              >
+                <DarkModeToggle />
+                <span className="font-medium">Theme</span>
+              </motion.div>
+
+              {/* Auth Links */}
+              {isAuthenticated ? (
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.5 }}
+                >
+                  <Link
+                    to="/profile"
+                    onClick={onClose}
+                    className="flex items-center gap-4 rounded-lg px-4 py-4 text-gray-700 transition-colors hover:bg-purple-50 dark:text-gray-300 dark:hover:bg-purple-900/30"
+                  >
+                    <FiUser size={20} />
+                    <span className="font-medium">My Profile</span>
+                  </Link>
+                </motion.div>
+              ) : (
+                <>
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 }}
+                  >
+                    <Link
+                      to="/login"
+                      onClick={onClose}
+                      className="flex items-center gap-4 rounded-lg px-4 py-4 text-gray-700 transition-colors hover:bg-purple-50 dark:text-gray-300 dark:hover:bg-purple-900/30"
+                    >
+                      <FiLogIn size={20} />
+                      <span className="font-medium">Login</span>
+                    </Link>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.6 }}
+                  >
+                    <Link
+                      to="/register"
+                      onClick={onClose}
+                      className="flex items-center gap-4 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 px-4 py-4 text-white shadow-lg shadow-purple-500/30"
+                    >
+                      <FiUserPlus size={20} />
+                      <span className="font-medium">Sign up</span>
+                    </Link>
+                  </motion.div>
+                </>
+              )}
             </div>
 
             {/* Cart Section */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.7 }}
               className="border-t border-gray-200/50 p-6 dark:border-gray-700/50"
             >
               <Link
