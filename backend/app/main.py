@@ -49,32 +49,10 @@ app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
     lifespan=lifespan,
-    docs_url="/docs" if settings.DEBUG else None,
-    redoc_url="/redoc" if settings.DEBUG else None,
+    docs_url="/docs",
+    redoc_url="/redoc",
+    openapi_url="/openapi.json",
 )
-
-
-# Health check endpoint for Render
-@app.get("/health")
-async def health_check():
-    """Health check endpoint for Render and monitoring"""
-    return {
-        "status": "healthy",
-        "app": settings.APP_NAME,
-        "version": settings.APP_VERSION,
-        "environment": settings.ENVIRONMENT
-    }
-
-
-@app.get("/api/v1/health")
-async def api_health_check():
-    """API health check endpoint for Render"""
-    return {
-        "status": "healthy",
-        "app": settings.APP_NAME,
-        "version": settings.APP_VERSION,
-        "environment": settings.ENVIRONMENT
-    }
 
 
 # ==================== CORS Middleware ====================
@@ -143,7 +121,7 @@ async def root():
         "version": settings.APP_VERSION,
         "environment": settings.ENVIRONMENT,
         "status": "running",
-        "docs": "/docs" if settings.DEBUG else "disabled",
+        "docs": "/docs",
     }
 
 
