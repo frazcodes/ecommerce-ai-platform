@@ -11,6 +11,9 @@ import CheckoutPage from '@pages/CheckoutPage'
 import OrderSuccessPage from '@pages/OrderSuccessPage'
 import ProfilePage from '@pages/ProfilePage'
 import SettingsPage from '@pages/SettingsPage'
+import PrivacyPolicyPage from '@pages/PrivacyPolicyPage'
+import TermsOfServicePage from '@pages/TermsOfServicePage'
+import CookiePolicyPage from '@pages/CookiePolicyPage'
 import NotFoundPage from '@pages/NotFoundPage'
 import DashboardPage from '@pages/admin/DashboardPage'
 import ProductsPageAdmin from '@pages/admin/ProductsPage'
@@ -57,6 +60,9 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
+      { path: 'privacy', element: <PrivacyPolicyPage /> },
+      { path: 'terms', element: <TermsOfServicePage /> },
+      { path: 'cookies', element: <CookiePolicyPage /> },
     ],
   },
   { path: '/login', element: <LoginPage /> },
