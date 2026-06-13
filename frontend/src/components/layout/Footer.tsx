@@ -228,7 +228,7 @@ const Footer = () => {
               </div>
               <div>
                 <p className="text-xs text-gray-600 dark:text-gray-400">Email</p>
-                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">support@smartcart.ai</p>
+                <p className="text-sm font-medium text-gray-900 dark:text-gray-100">fraz13933@gmail.com</p>
               </div>
             </div>
             <div className="flex items-center gap-3">
