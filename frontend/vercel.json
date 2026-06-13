@@ -4,16 +4,6 @@
   "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "vite",
-  "env": {
-    "VITE_API_BASE_URL": {
-      "description": "Backend API URL (Render backend URL)",
-      "value": "https://your-backend-url.onrender.com/api/v1"
-    },
-    "VITE_CATALOG_API_URL": {
-      "description": "Catalog API URL",
-      "value": "https://dummyjson.com"
-    }
-  },
   "headers": [
     {
       "source": "/(.*)",
